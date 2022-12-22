@@ -19,9 +19,7 @@ namespace MovieStoreWebApi.Operations.MovieOperations.Commands.CreateMovie
             var movie = _context.Movies.SingleOrDefault(x => x.MovieTitle == Model.MovieTitle);
             if (movie is not null)
             { throw new InvalidOperationException("Bu isme sahip bir film zaten mevcut"); }
-
             movie = _mapper.Map<Movie>(movie);
-
             _context.Movies.Add(movie);
             _context.SaveChanges();
         }

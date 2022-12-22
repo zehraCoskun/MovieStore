@@ -8,11 +8,10 @@ namespace MovieStoreWebApi.Operations.GenreOperations.Commands.UpdateGenre
         private readonly IMovieStoreDBContext _context;
         private readonly IMapper _mapper;
         public int id { get; set; }
-        public UpdateGenreModel Model;
+        public UpdateGenreModel Model { get; set; }
 
-        public UpdateGenre(UpdateGenreModel model, IMovieStoreDBContext context, IMapper mapper)
+        public UpdateGenre(IMovieStoreDBContext context)
         {
-            Model = model;
             _context = context;
         }
         public void Handle()
@@ -23,7 +22,7 @@ namespace MovieStoreWebApi.Operations.GenreOperations.Commands.UpdateGenre
             if (_context.Genres.Any(x => x.GenreName.ToLower() == Model.GenreName.ToLower() && x.ID != genre.ID))
             { throw new InvalidOperationException("Bu isimde bir film türü zaten mevcut"); }
             genre.GenreName = string.IsNullOrEmpty(Model.GenreName.Trim()) != default ? genre.GenreName : Model.GenreName;
-            genre.IsActive=Model.IsActive;
+            genre.IsActive = Model.IsActive;
             _context.SaveChanges();
         }
     }

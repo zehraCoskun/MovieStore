@@ -2,6 +2,8 @@ using AutoMapper;
 using MovieStoreWebApi.Entites;
 using MovieStoreWebApi.Operations.ActorOperations.Commands.CreateActor;
 using MovieStoreWebApi.Operations.ActorOperations.Queries;
+using MovieStoreWebApi.Operations.GenreOperations.Commands;
+using MovieStoreWebApi.Operations.GenreOperations.Queries;
 using MovieStoreWebApi.Operations.Queries;
 
 namespace MovieStoreWebApi.Mapping
@@ -25,6 +27,12 @@ namespace MovieStoreWebApi.Mapping
             CreateMap<Actor, ActorsViewModel>().ForMember(dest => dest.Movies, opt => opt.MapFrom(src => src.Movies.Select(x=> x.MovieTitle)));
             CreateMap<Actor, GetActorByIdModel>().ForMember(dest => dest.Movies, opt => opt.MapFrom(src => src.Movies.Select(x=> x.MovieTitle)));
             CreateMap<CreateActorModel, Actor>().ForMember(dest=>dest.Movies,opt=> opt.MapFrom(src=>src.Movies));
+
+            //genre controller
+            CreateMap<Genre, GenresViewModel>();
+            CreateMap<Genre, GetGenreByIdModel>();
+            CreateMap<CreateGenreModel, Genre>();
+
             
            
             

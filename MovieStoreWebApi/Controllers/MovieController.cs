@@ -2,6 +2,7 @@ using AutoMapper;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MovieStoreWebApi.DBOperations;
+using MovieStoreWebApi.Operations.MovieOperations.Commands.CreateMovie;
 using MovieStoreWebApi.Operations.MovieOperations.Commands.DeleteMovie;
 using MovieStoreWebApi.Operations.MovieOperations.Commands.UpdateMovie;
 using MovieStoreWebApi.Operations.Queries;
@@ -56,6 +57,16 @@ namespace MovieStoreWebApi.Controllers
             command.id=id;
             command.Model=updatedModel;
             UpdateMovieValidator validator = new UpdateMovieValidator();
+            validator.ValidateAndThrow(command);
+            command.Handle();
+            return Ok();
+        }
+        [HttpPost]
+        public IActionResult CreateMovie([FromBody] CreateMovieModel newModel)
+        {
+            CreateMovie command = new CreateMovie(_context,_mapper);
+            command.Model = newModel;
+            CreateMovieValidator validator = new CreateMovieValidator();
             validator.ValidateAndThrow(command);
             command.Handle();
             return Ok();
