@@ -26,6 +26,6 @@ namespace MovieStoreWebApi.Operations.ActorOperations.Queries
     {
         public string? Firstname { get; set; }
         public string? Surname { get; set; }
-        public ICollection<string>? Movies { get; set; }
+        public ICollection<string>? Movies   { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using MovieStoreWebApi.DBOperations;
 using MovieStoreWebApi.Entites;
 

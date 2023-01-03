@@ -2,6 +2,8 @@ using AutoMapper;
 using MovieStoreWebApi.Entites;
 using MovieStoreWebApi.Operations.ActorOperations.Commands.CreateActor;
 using MovieStoreWebApi.Operations.ActorOperations.Queries;
+using MovieStoreWebApi.Operations.DirectorOperations.Commands.CreateDirector;
+using MovieStoreWebApi.Operations.DirectorOperations.Queries;
 using MovieStoreWebApi.Operations.GenreOperations.Commands;
 using MovieStoreWebApi.Operations.GenreOperations.Queries;
 using MovieStoreWebApi.Operations.Queries;
@@ -32,6 +34,11 @@ namespace MovieStoreWebApi.Mapping
             CreateMap<Genre, GenresViewModel>();
             CreateMap<Genre, GetGenreByIdModel>();
             CreateMap<CreateGenreModel, Genre>();
+
+            //director controller
+            CreateMap<Director, DirectorsViewModel>();
+            CreateMap<Director, GetDirectorByIdModel>();
+            CreateMap<DirectorCreateModel, Director>();
 
             
            

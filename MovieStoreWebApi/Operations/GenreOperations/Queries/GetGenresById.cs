@@ -16,9 +16,9 @@ namespace MovieStoreWebApi.Operations.GenreOperations.Queries
         }
         public GetGenreByIdModel Handle()
         {
-            var genre = _context.Genres.Where(x=> x.ID==id).SingleOrDefault();
-            if(genre is null)
-            {throw new InvalidOperationException("Bu id'ye ait bir kategori mevcut değil");}
+            var genre = _context.Genres.Where(x => x.ID == id).SingleOrDefault();
+            if (genre is null)
+            { throw new InvalidOperationException("Bu id'ye ait bir kategori mevcut değil"); }
 
             GetGenreByIdModel vm = _mapper.Map<GetGenreByIdModel>(genre);
             return vm;
